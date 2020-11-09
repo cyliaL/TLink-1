@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_order">
+
+    <fragment
+        android:id="@+id/nav_order"
+        android:name="com.sirius.net.tlink.ui.order.OrderFragment"
+        android:label="@string/order"
+        tools:layout="@layout/fragment_order" >
+        <action
+            android:id="@+id/nav_to_taxi"
+            app:destination="@id/taxiFragment" />
+        <action
+            android:id="@+id/nav_to_marchandise"
+            app:destination="@id/marchandiseFragment" />
+        <action
+            android:id="@+id/nav_to_medical"
+            app:destination="@id/transportMedicalFragment" />
+        <action
+            android:id="@+id/nav_to_covoiturage"
+            app:destination="@id/covoiturageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_offers"
+        android:name="com.sirius.net.tlink.ui.offers.GalleryFragment"
+        android:label="@string/offers"
+        tools:layout="@layout/fragment_offers" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.sirius.net.tlink.ui.profile.SlideshowFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/taxiFragment"
+        android:name="com.sirius.net.tlink.ui.taxi.TaxiFragment"
+        android:label="@string/commander_taxi"
+        tools:layout="@layout/taxi_fragment" />
+    <fragment
+        android:id="@+id/marchandiseFragment"
+        android:name="com.sirius.net.tlink.ui.marchandise.MarchandiseFragment"
+        android:label="@string/commander_marchandise"
+        tools:layout="@layout/marchandise_fragment" />
+    <fragment
+        android:id="@+id/transportMedicalFragment"
+        android:name="com.sirius.net.tlink.ui.medical.TransportMedicalFragment"
+        android:label="@string/transport_medical"
+        tools:layout="@layout/transport_medical_fragment" />
+    <fragment
+        android:id="@+id/covoiturageFragment"
+        android:name="com.sirius.net.tlink.ui.covoiturage.CovoiturageFragment"
+        android:label="@string/covoiturage"
+        tools:layout="@layout/covoiturage_fragment" />
+</navigation>
