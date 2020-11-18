@@ -41,4 +41,10 @@
     <string name="transport_medical">Transport medical</string>
     <string name="commander_marchandise">Commander Marchandise</string>
     <string name="commander_taxi">Commander Taxi</string>
+    <string name="autre_date">Autre date</string>
+    <string name="entrez_l_adresse">Entrez l\'adresse</string>
+    <string name="adresse_de_d_part">Adresse de départ</string>
+    <string name="adresse_de_destination">Adresse de destination</string>
+    <string name="recherche_en_cours">Recherche en cours...</string>
+    <string name="annuler_la_recherche">Annuler la recherche</string>
 </resources>
