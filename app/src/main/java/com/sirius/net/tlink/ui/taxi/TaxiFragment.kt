@@ -68,7 +68,7 @@ class TaxiFragment : Fragment(),OnMapReadyCallback {
         checkLocationPermission()
 
         binding.confirmDirections.setOnClickListener {
-            //TODO post the request to the back end
+            //TODO post the request to the back en
             startSearch()
         }
         binding.departAdr.setOnClickListener {
