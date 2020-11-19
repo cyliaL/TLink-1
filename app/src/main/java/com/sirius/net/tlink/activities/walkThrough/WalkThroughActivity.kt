@@ -47,7 +47,7 @@ class WalkThroughActivity : AppCompatActivity() {
         walkThroughPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         walkThroughPager.adapter = WalkThroughAdapter(preferences)
 
-       nextButton.setOnClickListener {
+        nextButton.setOnClickListener {
            when(walkThroughPager.currentItem){
                0,1,2 ->{
                    walkThroughPager.setCurrentItem(walkThroughPager.currentItem+1,true)

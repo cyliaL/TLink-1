@@ -15,7 +15,6 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -40,7 +39,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil
-            .inflate(layoutInflater, R.layout.login_fragment,container,false)
+                .inflate(layoutInflater, R.layout.login_fragment,container,false)
         return binding.root
     }
 

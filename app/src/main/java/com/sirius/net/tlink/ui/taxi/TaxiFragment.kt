@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import android.widget.Toast.LENGTH_SHORT
@@ -22,6 +23,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -36,12 +41,15 @@ import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.sirius.net.tlink.R
+import com.sirius.net.tlink.adapters.TaxiOffersAdapter
+import com.sirius.net.tlink.adapters.TaxiOffersClick
 import com.sirius.net.tlink.databinding.TaxiFragmentBinding
+import com.sirius.net.tlink.model.OffreTaxi
 
 
 class TaxiFragment : Fragment(),OnMapReadyCallback {
 
-    //private val viewModel: TaxiViewModel by activityViewModels()
+    private val viewModel: TaxiViewModel by activityViewModels()
     private lateinit var binding: TaxiFragmentBinding
     private lateinit var mapView:MapView
     private lateinit var gMap:GoogleMap
@@ -49,7 +57,7 @@ class TaxiFragment : Fragment(),OnMapReadyCallback {
     private val AUTOCOMPLETE_REQUEST_CODE = 1
     private val PERMISSION_REQUEST_CODE = 123
     private val LOCATION_CHECK_CODE = 200
-    private val fields = listOf(Place.Field.ID, Place.Field.NAME,Place.Field.LAT_LNG,Place.Field.ADDRESS)
+    private val fields = listOf(Place.Field.ID, Place.Field.NAME,Place.Field.LAT_LNG)
     private var point = ""
     private var startMarker:Marker? = null
     private var endMarker:Marker? = null
@@ -68,8 +76,10 @@ class TaxiFragment : Fragment(),OnMapReadyCallback {
         checkLocationPermission()
 
         binding.confirmDirections.setOnClickListener {
-            //TODO post the request to the back en
-            startSearch()
+            //TODO post the request to the back end
+            //startSearch()
+            showOffersList(ArrayList())
+
         }
         binding.departAdr.setOnClickListener {
             val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields)
@@ -176,6 +186,54 @@ class TaxiFragment : Fragment(),OnMapReadyCallback {
 
         val cancelButton = dialog.findViewById<Button>(R.id.cancel_search_button)
         cancelButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    //the dialog initialisation for offers list
+    private fun showOffersList(offersList: ArrayList<OffreTaxi>){
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.offer_selection_dialog)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window!!.setGravity(Gravity.BOTTOM)
+        dialog.window!!.setLayout(
+                ConstraintLayout.LayoutParams.MATCH_PARENT
+                , ConstraintLayout.LayoutParams.WRAP_CONTENT)
+        dialog.setCancelable(false)
+
+        val offerListRecycler = dialog.findViewById<RecyclerView>(R.id.offers_recycler)
+        val layoutManager = LinearLayoutManager(requireContext(),VERTICAL,false)
+        val click = object: TaxiOffersClick{
+            override fun onClick(position: Int) {
+                finalConfirmation(position)
+                dialog.dismiss()
+            }
+        }
+        val adapter = TaxiOffersAdapter(offersList,click)
+
+        offerListRecycler.setHasFixedSize(false)
+        offerListRecycler.layoutManager = layoutManager
+        offerListRecycler.adapter = adapter
+        dialog.show()
+
+    }
+
+    private fun finalConfirmation(position: Int) {
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.notes_dialog)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window!!.setGravity(Gravity.BOTTOM)
+        dialog.window!!.setLayout(
+                ConstraintLayout.LayoutParams.MATCH_PARENT
+                , ConstraintLayout.LayoutParams.WRAP_CONTENT)
+        dialog.setCancelable(false)
+
+        val confirmButton = dialog.findViewById<Button>(R.id.confirm_note_button)
+        //val note = dialog.findViewById<TextView>(R.id.note_demand)
+
+        confirmButton.setOnClickListener {
             dialog.dismiss()
         }
 

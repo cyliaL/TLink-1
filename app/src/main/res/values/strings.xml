@@ -47,4 +47,8 @@
     <string name="adresse_de_destination">Adresse de destination</string>
     <string name="recherche_en_cours">Recherche en cours...</string>
     <string name="annuler_la_recherche">Annuler la recherche</string>
+    <string name="s_lectionner_une_offre">Sélectionner une offre</string>
+    <string name="votre_note">Votre note</string>
+    <string name="ecrire_une_note">Ecrire une note</string>
+    <string name="places">Places</string>
 </resources>
