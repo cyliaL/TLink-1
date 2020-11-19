@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_order"
-        android:name="com.sirius.net.tlink.ui.order.OrderFragment"
+        android:name="com.sirius.net.tlink.ui.home.HomeFragment"
         android:label="@string/order"
-        tools:layout="@layout/fragment_order" >
+        tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/nav_to_taxi"
             app:destination="@id/taxiFragment" />
@@ -23,12 +23,6 @@
             android:id="@+id/nav_to_covoiturage"
             app:destination="@id/covoiturageFragment" />
     </fragment>
-
-    <fragment
-        android:id="@+id/nav_offers"
-        android:name="com.sirius.net.tlink.ui.offers.GalleryFragment"
-        android:label="@string/offers"
-        tools:layout="@layout/fragment_offers" />
 
     <fragment
         android:id="@+id/nav_profile"

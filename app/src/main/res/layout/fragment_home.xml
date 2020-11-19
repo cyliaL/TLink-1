@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.sirius.net.tlink.ui.order.OrderViewModel" />
+            type="com.sirius.net.tlink.ui.home.HomeViewModel" />
     </data>
 
     <LinearLayout
@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@drawable/view_background"
-        tools:context=".ui.order.OrderFragment">
+        tools:context=".ui.home.HomeFragment">
 
 
         <TextView
