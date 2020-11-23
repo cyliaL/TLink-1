@@ -13,6 +13,7 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
+ * CO??EDDD
  * Use the [suivi_marchandise.newInstance] factory method to
  * create an instance of this fragment.
  */
