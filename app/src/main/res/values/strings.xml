@@ -67,4 +67,7 @@
     <string name="suivi3">Arrivage de la marchandise à la destination </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="prenom_d_utilisateur">prenom d\'utilisateur</string>
+    <string name="warning_password">saisir deux mots de pass identiques</string>
+    <string name="d_connecter">Déconnecter</string>
 </resources>

@@ -1,8 +1,11 @@
 package com.sirius.net.tlink.ui.login
 
+import android.app.Dialog
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -33,6 +36,7 @@ class LoginFragment : Fragment() {
     private lateinit var passwordInput: TextView
     private lateinit var requestQueue: RequestQueue
     private lateinit var SharedPrefs:SharedPreferences
+    private lateinit var dialog:Dialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +49,7 @@ class LoginFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        dialog = Dialog(requireContext())
         SharedPrefs = requireContext().getSharedPreferences("TLINK",MODE_PRIVATE)
         if(SharedPrefs.getBoolean("IS_USER_LOGED",false)){
             val intent  = Intent(requireActivity(),MainActivity::class.java)
@@ -70,6 +75,12 @@ class LoginFragment : Fragment() {
         }
     }
 
+    private fun showLoading() {
+        dialog.setContentView(R.layout.loading_dialog)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
+    }
+
     /**
      * pour verifier les input est ce qu'il ne sont pas vides
      */
@@ -78,6 +89,7 @@ class LoginFragment : Fragment() {
         val password = passwordInput.text.toString()
 
         if(password.isNotEmpty() && phoneNumber.isNotEmpty()){
+            showLoading()
             signIn(phoneNumber,password)
         }
     }
@@ -95,11 +107,13 @@ class LoginFragment : Fragment() {
                     if(jsonObject.getString("error") == "false"){
                         handleRequest(jsonObject)
                     }else{
+                        dialog.dismiss()
                         Toast.makeText(requireContext()
                                 , jsonObject.getString("msg"), Toast.LENGTH_LONG).show()
                     }
                 },
                 {error ->
+                    dialog.dismiss()
                     Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
                     requestQueue.stop()
                 }
@@ -131,6 +145,7 @@ class LoginFragment : Fragment() {
 
         val intent  = Intent(requireActivity(),MainActivity::class.java)
         startActivity(intent).also {
+            dialog.dismiss()
             requireActivity().finish()
         }
     }

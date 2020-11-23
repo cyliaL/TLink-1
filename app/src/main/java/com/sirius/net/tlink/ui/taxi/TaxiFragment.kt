@@ -53,7 +53,7 @@ class TaxiFragment : Fragment(),OnMapReadyCallback {
     private lateinit var binding: TaxiFragmentBinding
     private lateinit var mapView:MapView
     private lateinit var gMap:GoogleMap
-    private val API_KEY = "AIzaSyCvYZHnDSX4RfKZp-zsZ5s91-_2H-7Fk-E"
+    private val API_KEY = "AIzaSyD3fedumIAgDho9PTDDnmGymuU8gIGRyi4"
     private val AUTOCOMPLETE_REQUEST_CODE = 1
     private val PERMISSION_REQUEST_CODE = 123
     private val LOCATION_CHECK_CODE = 200
@@ -258,8 +258,9 @@ class TaxiFragment : Fragment(),OnMapReadyCallback {
                 }
                 AutocompleteActivity.RESULT_ERROR -> {
                     data?.let {
+                        val status = Autocomplete.getStatusFromIntent(data)
                         Toast.makeText(requireContext()
-                                ,"Erreur lors la recherche de la place, Réssayer s'il vous plait."
+                                ,status.statusMessage
                                 , LENGTH_LONG).show()
                     }
                 }

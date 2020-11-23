@@ -1,8 +1,13 @@
 package com.sirius.net.tlink.activities.Main
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import android.view.WindowManager
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.viewModels
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -16,17 +21,20 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.res.ResourcesCompat
 import com.shreyaspatil.material.navigationview.MaterialNavigationView
 import com.sirius.net.tlink.R
+import com.sirius.net.tlink.activities.Login.LoginActivity
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var sharedPrefs:SharedPreferences
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_TLink)
         setContentView(R.layout.activity_main)
-
+        sharedPrefs = getSharedPreferences("TLINK", MODE_PRIVATE)
         stylizeToolBar()
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
@@ -42,6 +50,27 @@ class MainActivity : AppCompatActivity() {
         ), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        initHeader(navView.getHeaderView(0))
+    }
+
+    private fun initHeader(header: View){
+        val fullName : TextView = header.findViewById(R.id.full_name)
+        val phoneNumber: TextView = header.findViewById(R.id.header_phone)
+        val disconnectButton: Button = header.findViewById(R.id.disconnect_button)
+        val username = sharedPrefs.getString("name","...")
+        val userSurName = sharedPrefs.getString("surname","...")
+        val userPhone = sharedPrefs.getString("tel1", "...")
+
+        fullName.text =  "$username  $userSurName"
+        phoneNumber.text = userPhone
+        disconnectButton.setOnClickListener {
+            sharedPrefs.edit().putBoolean("IS_USER_LOGED",false).apply()
+            val intent = Intent(this,LoginActivity::class.java)
+            startActivity(intent).also {
+                finish()
+            }
+        }
     }
 
     private fun stylizeToolBar() {
