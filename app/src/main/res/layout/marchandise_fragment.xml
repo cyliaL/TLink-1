@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,8 +9,126 @@
     tools:context=".ui.marchandise.MarchandiseFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:id="@+id/choix_taille"
+        android:layout_width="362dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/choix_taille"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/petite"
+        style="@style/button_style"
+        android:layout_width="96dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="68dp"
+        android:text="@string/petite"
+        app:layout_constraintBottom_toTopOf="@+id/type_marchandise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/choix_taille"
+        app:layout_constraintVertical_bias="0.062" />
+
+    <Button
+        android:id="@+id/moyenne"
+        style="@style/button_style"
+        android:layout_width="96dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/moyenne"
+        app:layout_constraintEnd_toStartOf="@+id/grande"
+        app:layout_constraintHorizontal_bias="0.392"
+        app:layout_constraintStart_toEndOf="@+id/petite"
+        app:layout_constraintTop_toTopOf="@+id/choix_taille" />
+
+    <Button
+        android:id="@+id/grande"
+        style="@style/button_style"
+        android:layout_width="96dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/grande"
+        app:layout_constraintBottom_toTopOf="@+id/type_marchandise"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/choix_taille"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <TextView
+        android:id="@+id/type_marchandise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/type_marchandise"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moyenne" />
+
+    <Spinner
+        android:id="@+id/type_marchandise_spinner"
+        android:background="@color/blue_500"
+        android:layout_width="333dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type_marchandise" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/quantite"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type_marchandise_spinner" />
+
+    <Spinner
+        android:id="@+id/quantity_spinner"
+        android:background="@color/blue_500"
+        android:layout_width="102dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/next_marchandise"
+        style="@style/button_style"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:drawableEnd="@drawable/ic_next"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/white"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/next_marchandise"
+        android:textSize="18sp"
+        android:theme="@style/button_style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantity_spinner"
+        app:layout_constraintVertical_bias="0.374" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
