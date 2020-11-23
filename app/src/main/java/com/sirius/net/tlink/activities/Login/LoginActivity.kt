@@ -23,4 +23,5 @@ class LoginActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.setBackgroundDrawable(background)
     }
+    //a comment
 }
