@@ -17,7 +17,7 @@ import com.sirius.net.tlink.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
-    private val viewModel: HomeViewModel by activityViewModels()
+    //private val viewModel: HomeViewModel by activityViewModels()
     private lateinit var binding: FragmentHomeBinding
     private lateinit var recyclerView: RecyclerView
 

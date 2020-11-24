@@ -32,6 +32,7 @@ class LoginFragment : Fragment() {
     private lateinit var binding: LoginFragmentBinding
     private lateinit var loginButton: Button
     private lateinit var registerButton: Button
+    private lateinit var forgotPassButton: Button
     private lateinit var phoneNumberInput: TextView
     private lateinit var passwordInput: TextView
     private lateinit var requestQueue: RequestQueue
@@ -63,9 +64,14 @@ class LoginFragment : Fragment() {
         registerButton = binding.registerLaunchButton
         phoneNumberInput = binding.loginPhoneInput
         passwordInput = binding.loginPasswordInput
+        forgotPassButton = binding.forgottenPassword
 
         loginButton.setOnClickListener {
             verifyInputs()
+        }
+
+        forgotPassButton.setOnClickListener {
+            verifyPhoneInput()
         }
 
         registerButton.setOnClickListener {
@@ -73,6 +79,49 @@ class LoginFragment : Fragment() {
                     .findNavController(R.id.nav_host_fragment_login)
             navController.navigate(R.id.action_register)
         }
+    }
+
+    private fun verifyPhoneInput() {
+        val phoneNumber = phoneNumberInput.text.toString()
+        if(phoneNumber.isNotEmpty()){
+            showLoading()
+            sendReset(phoneNumber)
+        }
+    }
+
+    private fun sendReset(phoneNumber: String) {
+        val url = "https://www.sirius-iot.eu/Dev/Tlink/Android_API_All.php?forgot_password"
+        val request = object : StringRequest(Method.POST, url,
+                {response ->
+                    val jsonResponse = JSONObject(response)
+                    val jsonObject = jsonResponse.getJSONObject("forgot_password")
+                    if(jsonObject.getString("error") == "false"){
+                        Toast.makeText(requireContext()
+                                , "vous etes en train de recevez une " +
+                                "appelle telephonique pour confirmer", Toast.LENGTH_LONG).show()
+                    }else{
+                        Toast.makeText(requireContext()
+                                , jsonObject.getString("message"), Toast.LENGTH_LONG).show()
+                    }
+                    dialog.dismiss()
+                },
+                {error ->
+                    dialog.dismiss()
+                    Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
+                    requestQueue.stop()
+                }
+        ){
+            override fun getParams():Map<String, String> {
+                val params:HashMap<String,String> = HashMap()
+                //Adding parameters to request
+                params["num_tel"] = phoneNumber
+                //returning parameter
+                return params;
+            }
+
+        }
+
+        requestQueue.add(request)
     }
 
     private fun showLoading() {

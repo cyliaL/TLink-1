@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme.Launcher">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD3fedumIAgDho9PTDDnmGymuU8gIGRyi4" />
+            android:value="AIzaSyCvYZHnDSX4RfKZp-zsZ5s91-_2H-7Fk-E" />
         <activity android:name=".activities.Login.LoginActivity"/>
         <activity android:name=".activities.walkThrough.WalkThroughActivity">
             <intent-filter>
