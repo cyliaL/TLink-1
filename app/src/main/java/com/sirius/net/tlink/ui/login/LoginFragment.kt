@@ -190,7 +190,7 @@ class LoginFragment : Fragment() {
         SharedPrefs.edit().putString("mail",jsonObject.getString("mail")).apply()
         SharedPrefs.edit().putString("tel1",jsonObject.getString("tel1")).apply()
         SharedPrefs.edit().putString("tel2",jsonObject.getString("tel2")).apply()
-        SharedPrefs.edit().putString("uid",jsonObject.getString("uid")).apply()
+        SharedPrefs.edit().putString("uid",jsonObject.getString("id")).apply()
 
         val intent  = Intent(requireActivity(),MainActivity::class.java)
         startActivity(intent).also {

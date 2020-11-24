@@ -1,6 +1,6 @@
 package com.sirius.net.tlink.model
 
-data class DemandTaxi(var idUser: String = "",
+data class DemandTaxi(var idUser: String = "",var idDemand:String ="",
                  var adrDeparture:String ="",
                  var adrDestination:String="",
                  var departLongitude: Float =0F,var departLatitude: Float=0F,

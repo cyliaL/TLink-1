@@ -22,7 +22,7 @@ class TaxiOffersAdapter(offersList: ArrayList<OffreTaxi>?,var clickListener:Taxi
             adapterOffersList = offersList
     }
 
-    override fun getItemCount(): Int = 6 //adapterOffersList.size
+    override fun getItemCount(): Int = adapterOffersList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaxiOffersHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -30,9 +30,13 @@ class TaxiOffersAdapter(offersList: ArrayList<OffreTaxi>?,var clickListener:Taxi
     }
 
     override fun onBindViewHolder(holder: TaxiOffersHolder, position: Int) {
-        //val item = adapterOffersList[position]
+        val item = adapterOffersList[position]
 
-        //holder.price.text = item.price.toString()
+        holder.price.text = "${item.price} DZA"
+        holder.depart.text = item.adrDeparture
+        holder.destination.text = item.adrDestination
+        holder.freePlaces.text = "Places vides: ${item.freePlaces}"
+        holder.time.text = item.departTime
     }
 
 
@@ -42,6 +46,11 @@ class TaxiOffersAdapter(offersList: ArrayList<OffreTaxi>?,var clickListener:Taxi
     View.OnClickListener{
 
         val price:TextView = itemView.findViewById(R.id.prix_offre)
+        val depart:TextView = itemView.findViewById(R.id.offer_departure)
+        val destination:TextView = itemView.findViewById(R.id.offer_destination)
+        val freePlaces:TextView = itemView.findViewById(R.id.offer_places)
+        val time:TextView = itemView.findViewById(R.id.offer_time)
+
         init {
             itemView.setOnClickListener(this)
         }

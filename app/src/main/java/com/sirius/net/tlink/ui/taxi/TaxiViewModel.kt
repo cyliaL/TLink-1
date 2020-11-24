@@ -3,10 +3,16 @@ package com.sirius.net.tlink.ui.taxi
 import androidx.lifecycle.ViewModel
 import com.google.android.libraries.places.api.model.Place
 import com.sirius.net.tlink.model.DemandTaxi
+import com.sirius.net.tlink.model.OffreTaxi
 
 class TaxiViewModel : ViewModel() {
 
     var currentTaxiDemand: DemandTaxi = DemandTaxi()
+    var currentTaxiOffer: OffreTaxi = OffreTaxi()
+
+    fun setTaxiOffer(taxiOffer:OffreTaxi){
+        currentTaxiOffer = taxiOffer
+    }
 
     fun setDemandDate(day: Int, month: Int, year: Int) {
         currentTaxiDemand.departDate = "$year-$month-$day"
@@ -34,6 +40,10 @@ class TaxiViewModel : ViewModel() {
 
     fun setDemandNote(note: String) {
         currentTaxiDemand.Note = note
+    }
+
+    fun setIdDemand(id: String) {
+        currentTaxiDemand.idDemand = id
     }
 
 }
