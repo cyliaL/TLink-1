@@ -24,6 +24,7 @@ class SlideshowFragment : Fragment() {
         slideshowViewModel =
                 ViewModelProvider(this).get(SlideshowViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_profile, container, false)
+
         return root
     }
 
