@@ -44,9 +44,23 @@
         android:name="com.sirius.net.tlink.ui.medical.TransportMedicalFragment"
         android:label="@string/transport_medical"
         tools:layout="@layout/transport_medical_fragment" />
+
+
     <fragment
         android:id="@+id/covoiturageFragment"
         android:name="com.sirius.net.tlink.ui.covoiturage.CovoiturageFragment"
         android:label="@string/covoiturage"
-        tools:layout="@layout/covoiturage_fragment" />
+        tools:layout="@layout/covoiturage_fragment" >
+        <action
+            android:id="@+id/nav_to_covOrder"
+            app:destination="@+id/covoiturageOrderFragment" />
+        <action
+            android:id="@+id/nav_to_covOffer"
+            app:destination="@+id/covoiturageOfferFragment" />
+        <action
+            android:id="@+id/nav_to_covMyOrder"
+            app:destination="@+id/covoiturageMyOrdersFragment" />
+
+    </fragment>
+
 </navigation>

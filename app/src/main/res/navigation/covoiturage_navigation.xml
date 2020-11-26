@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_nouvelle">
+
+
+    <fragment
+        android:id="@+id/nav_nouvelle"
+        android:name="com.sirius.net.tlink.ui.covoiturageNouvelle.CovoiturageNouvelleFragment"
+        android:label="@string/nouvelle"
+        tools:layout="@layout/covoiturage_nouvelle_fragment" >
+        <action
+            android:id="@+id/nav_to_covOrder"
+            app:destination="@+id/covoiturageOrderFragment" />
+        <action
+            android:id="@+id/nav_to_covOffer"
+            app:destination="@+id/covoiturageOfferFragment" />
+
+    </fragment>
+
+
+
+
+    <fragment
+        android:id="@+id/covoiturageOrderFragment"
+        android:name="com.sirius.net.tlink.ui.covoiturageOrder.CovoiturageOrderFragment"
+        android:label="@string/covoiturageOrder"
+        tools:layout="@layout/covoiturage_order_fragment" />
+    <fragment
+        android:id="@+id/covoiturageOfferFragment"
+        android:name="com.sirius.net.tlink.ui.covoiturageOffer.CovoiturageOfferFragment"
+        android:label="@string/covoiturageOffer"
+        tools:layout="@layout/covoiturage_offer_fragment" />
+
+
+
+
+    <fragment
+        android:id="@+id/nav_commandes"
+        android:name="com.sirius.net.tlink.ui.covoiturageMyOrders.CovoiturageMyOrdersFragment"
+        android:label="@string/MyOrders"
+        tools:layout="@layout/covoiturage_my_orders_fragment" />
+
+    <fragment
+        android:id="@+id/nav_offres"
+        android:name="com.sirius.net.tlink.ui.covoiturageMyOffers.CovoiturageMyOffersFragment"
+        android:label="@string/MyOffers"
+        tools:layout="@layout/covoiturage_my_offers_fragment" />
+
+
+</navigation>

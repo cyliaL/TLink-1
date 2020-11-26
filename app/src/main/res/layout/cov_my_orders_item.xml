@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:elevation="2dp"
+        android:padding="16dp">
+
+        <ImageView
+
+            android:id="@+id/image_select_myOrder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_sports_car"
+            />
+
+        <TextView
+            android:id="@+id/fullName_myOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@id/image_select_myOrder"
+            android:layout_toRightOf="@+id/image_select_myOrder"
+            android:text="Nom prénom:"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/date_ref_select_myOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fullName_myOrder"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@id/image_select_myOrder"
+            android:layout_toRightOf="@+id/image_select_myOrder"
+            android:text="21/11/2020"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/virgul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fullName_myOrder"
+            android:layout_marginLeft="1dp"
+            android:layout_toEndOf="@id/date_ref_select_myOrder"
+            android:layout_toRightOf="@+id/date_ref_select_myOrder"
+            android:text=","
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/time_ref_select_myOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fullName_myOrder"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/virgul"
+            android:layout_toRightOf="@+id/virgul"
+            android:text="19:41"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/text_depart_myOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/date_ref_select_myOrder"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="De"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/depart_myOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/date_ref_select_myOrder"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/text_depart_myOrder"
+            android:layout_toRightOf="@+id/text_depart_myOrder"
+            android:text="Depart"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/text_arrivee_myOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/depart_myOrder"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Vers"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/arrivee_myOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/depart_myOrder"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@id/text_arrivee_myOrder"
+            android:text="Arrivée"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/text_prix_myOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_arrivee_myOrder"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="5dp"
+            android:text="Payé :"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/prix_myOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_arrivee_myOrder"
+            android:layout_marginStart="170dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="1500DA "
+            android:layout_toEndOf="@id/text_prix_myOrder"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

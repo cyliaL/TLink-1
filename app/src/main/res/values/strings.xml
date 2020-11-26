@@ -70,4 +70,35 @@
     <string name="prenom_d_utilisateur">prenom d\'utilisateur</string>
     <string name="warning_password">saisir deux mots de pass identiques</string>
     <string name="d_connecter">Déconnecter</string>
+
+
+    <string name="OffrirTrajet">Proposer un trajet</string>
+    <string name="CommanderTrajet">Rechercher un trajet</string>
+    <string name="covoiturageOrder">Commande covoiturage</string>
+    <string name="covoiturageOffer">Offre covoiturage</string>
+    <string name="prix">Prix</string>
+    <string name="nbr_place">Nombre de places</string>
+    <string name="selectionner_une_offre">Offres disponibles</string>
+
+    <string name="selectionner_une_commande">Commandes disponibles</string>
+    <string name="retour">Retour</string>
+    <string name="choisirOffre">Faites-lui une demande</string>
+    <string name="choisirCommande">Faites-lui une offre</string>
+    <string name="MyOffers">Mes offres</string>
+    <string name="MyOrders">Mes commandes</string>
+    <string name="covoiturageMyOrder">Mes commandes</string>
+    <string name="Mes_commandes">Mes commandes</string>
+    <string name="Mes_offres">Mes offres</string>
+    <string name="myOrdersList">Mes commandes</string>
+    <string name="nouvelle">Nouvelle</string>
+    <string name="OffrirTrajetDescription">Cette option permet au conducteur de créer une offre</string>
+    <string name="CommanderTrajetDesction">Cette option permet au passagers de créer une commande et choisir une offre si il y en a</string>
+    <string name="myOffersList">Mes offres</string>
+    <string name="no_car_dialog">Non</string>
+    <string name="yes_car_dialog">Oui</string>
+    <string name="marque_car">Marque</string>
+    <string name="modele_car">Modèle</string>
+    <string name="demandes_dispo">Demandes disponibles</string>
+    <string name="offres_dispo">Offres disponibles</string>
+    <string name="backOfer">Annuler</string>
 </resources>
