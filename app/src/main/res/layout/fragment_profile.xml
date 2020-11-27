@@ -12,8 +12,9 @@
         android:layout_width="293dp"
         android:layout_height="42dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/input_background"
         android:drawablePadding="16dp"
         android:ems="10"
@@ -23,9 +24,9 @@
         android:paddingTop="10dp"
         android:paddingEnd="8dp"
         android:paddingBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/profile_phone_input"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.678"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
         app:layout_constraintVertical_bias="0.023"
@@ -36,8 +37,8 @@
         android:layout_width="293dp"
         android:layout_height="42dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/input_background"
         android:drawablePadding="16dp"
         android:ems="10"
@@ -47,11 +48,11 @@
         android:paddingTop="10dp"
         android:paddingEnd="8dp"
         android:paddingBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/profile_mail_input3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.685"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/profile_name_input"
         app:layout_constraintVertical_bias="0.163"
         app:layout_constraintVertical_chainStyle="packed" />
 
@@ -60,7 +61,6 @@
         android:layout_width="293dp"
         android:layout_height="42dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/input_background"
         android:drawablePadding="16dp"
@@ -73,9 +73,9 @@
         android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.685"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/profile_phone_input"
         app:layout_constraintVertical_bias="0.295"
         app:layout_constraintVertical_chainStyle="packed" />
 
@@ -83,33 +83,12 @@
         android:id="@+id/imageView4"
         android:layout_width="101dp"
         android:layout_height="112dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="32dp"
         android:src="@drawable/ic_account"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginBottom="180dp"
-        android:src="@drawable/ic_about"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_mail_input3"
-        app:layout_constraintVertical_bias="0.896" />
-
-    <TextView
-        android:id="@+id/supprimerCompte"
-        android:layout_width="222dp"
-        android:layout_height="34dp"
-        android:text="@string/supprimerCompte"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_mail_input3"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

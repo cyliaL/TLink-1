@@ -47,7 +47,7 @@ class OrdersAdapter(val navController: NavController)
             }
             3->{
                 holder.orderName.text = holder.itemView.context.getString(R.string.covoiturage)
-                holder.orderImage.setImageResource(R.drawable.ic_taxi)
+                holder.orderImage.setImageResource(R.drawable.ic_car)
             }
         }
     }

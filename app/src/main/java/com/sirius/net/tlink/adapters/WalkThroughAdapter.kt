@@ -28,22 +28,22 @@ class WalkThroughAdapter(var preferences:SharedPreferences): RecyclerView.Adapte
         //Assign the images
         when(position){
             0 ->{
-                holder.stepImage.setImageResource(R.drawable.ic_humanlike)
+                holder.stepImage.setImageResource(R.drawable.ic_order_ride)
                 holder.titleText.text = context.getString(R.string.title_walk1)
                 holder.descriptionText.text = context.getString(R.string.walk_pos1)
             }
             1 ->{
-                holder.stepImage.setImageResource(R.drawable.ic_humanlike)
+                holder.stepImage.setImageResource(R.drawable.ic_marchandise)
                 holder.titleText.text = context.getString(R.string.title_walk2)
                 holder.descriptionText.text = context.getString(R.string.walk_pos2)
             }
             2 ->{
-                holder.stepImage.setImageResource(R.drawable.ic_humanlike)
+                holder.stepImage.setImageResource(R.drawable.ic_ambulance)
                 holder.titleText.text = context.getString(R.string.title_walkpos3)
                 holder.descriptionText.text = context.getString(R.string.description_pos3)
             }
             3 ->{
-                holder.stepImage.setImageResource(R.drawable.ic_humanlike)
+                holder.stepImage.setImageResource(R.drawable.ic_covoiturage)
                 holder.titleText.text = context.getString(R.string.title_walk_pos4)
                 holder.descriptionText.text = context.getString(R.string.description_pos4)
             }

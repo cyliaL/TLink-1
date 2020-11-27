@@ -12,7 +12,7 @@
             android:title="@string/order" />
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_account"
+            android:icon="@drawable/ic_outline_account"
             android:title="@string/profile" />
 
         <item

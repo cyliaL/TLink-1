@@ -73,8 +73,7 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
         Place.Field.ID,
         Place.Field.ADDRESS,
         Place.Field.NAME,
-        Place.Field.LAT_LNG
-    )
+        Place.Field.LAT_LNG)
     private var point = ""
     private var startMarker:Marker? = null
     private var endMarker:Marker? = null
@@ -165,6 +164,7 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
         currentDateTime.minute = cal.get(Calendar.MINUTE)
 
         todayButton.setOnClickListener {
+            binding.datagatherLayout.visibility = VISIBLE
             viewModel.setDemandDate(
                 currentDateTime.day,
                 currentDateTime.month,
@@ -216,6 +216,7 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
         savedDateTime.hour = hourOfDay
         savedDateTime.minute = minute
         viewModel.setDemandTime(savedDateTime.hour, savedDateTime.minute)
+        binding.datagatherLayout.visibility = VISIBLE
     }
 
     @SuppressLint("MissingPermission")

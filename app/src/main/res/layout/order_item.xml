@@ -3,21 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_container"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="170dp"
     android:layout_margin="8dp"
-    android:background="@drawable/button_background">
+    android:background="@drawable/button_background"
+    android:backgroundTint="@color/blue_500"
+    android:elevation="3dp">
 
 
     <ImageView
         android:id="@+id/order_preview"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/order_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_chainStyle="packed"
         app:srcCompat="@drawable/ic_main_splash" />
 

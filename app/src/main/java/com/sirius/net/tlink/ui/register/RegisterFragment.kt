@@ -95,6 +95,8 @@ class RegisterFragment : Fragment() {
                                         .getJSONObject("USER_REGISTRATION")
                                 if(jsonObject.getString("error") == "false"){
                                     handleRequest(jsonObject)
+                                }else{
+                                    dialog.dismiss()
                                 }
                             },
                             {error ->
