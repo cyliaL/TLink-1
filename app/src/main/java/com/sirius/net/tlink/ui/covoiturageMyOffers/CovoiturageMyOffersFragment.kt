@@ -35,6 +35,7 @@ class CovoiturageMyOffersFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
+        //hello
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.covoiturage_my_offers_fragment, container, false)
         return binding.root
     }
