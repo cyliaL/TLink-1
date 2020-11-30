@@ -32,6 +32,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -70,10 +71,10 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
     private val PERMISSION_REQUEST_CODE = 123
     private val LOCATION_CHECK_CODE = 200
     private val fields = listOf(
-        Place.Field.ID,
-        Place.Field.ADDRESS,
-        Place.Field.NAME,
-        Place.Field.LAT_LNG)
+            Place.Field.ID,
+            Place.Field.ADDRESS,
+            Place.Field.NAME,
+            Place.Field.LAT_LNG)
     private var point = ""
     private var startMarker:Marker? = null
     private var endMarker:Marker? = null
@@ -87,7 +88,7 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.taxi_fragment, container, false)
         return binding.root
@@ -112,16 +113,16 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
                     showNoteDialog()
                 }else{
                     Toast.makeText(
-                        requireContext(),
-                        "Spécifier un nombre de places valid",
-                        LENGTH_SHORT
+                            requireContext(),
+                            "Spécifier un nombre de places valid",
+                            LENGTH_SHORT
                     ).show()
                 }
             }else{
                 Toast.makeText(
-                    requireContext(),
-                    "Spécifier vos adresses de departure et destination",
-                    LENGTH_SHORT
+                        requireContext(),
+                        "Spécifier vos adresses de departure et destination",
+                        LENGTH_SHORT
                 ).show()
             }
 
@@ -150,7 +151,7 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window!!.setGravity(Gravity.BOTTOM)
         dialog.window!!.setLayout(
-            ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.MATCH_PARENT
+                ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.MATCH_PARENT
         )
 
         val todayButton:Button = dialog.findViewById(R.id.today_button)
@@ -166,9 +167,9 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
         todayButton.setOnClickListener {
             binding.datagatherLayout.visibility = VISIBLE
             viewModel.setDemandDate(
-                currentDateTime.day,
-                currentDateTime.month,
-                currentDateTime.year
+                    currentDateTime.day,
+                    currentDateTime.month,
+                    currentDateTime.year
             )
             viewModel.setDemandTime(currentDateTime.hour, currentDateTime.minute)
             dialog.dismiss()
@@ -176,11 +177,11 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
 
         dateButton.setOnClickListener {
             val dateDialog = DatePickerDialog(
-                requireContext(),
-                this,
-                currentDateTime.year,
-                currentDateTime.month,
-                currentDateTime.day
+                    requireContext(),
+                    this,
+                    currentDateTime.year,
+                    currentDateTime.month,
+                    currentDateTime.day
             )
             dateDialog.setCancelable(false)
             dateDialog.setOnShowListener {
@@ -199,11 +200,11 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
         viewModel.setDemandDate(savedDateTime.day, savedDateTime.month, savedDateTime.year)
 
         val timeDialog = TimePickerDialog(
-            context,
-            this,
-            currentDateTime.hour,
-            currentDateTime.minute,
-            true
+                context,
+                this,
+                currentDateTime.hour,
+                currentDateTime.minute,
+                true
         )
         timeDialog.setCancelable(false)
         timeDialog.setOnShowListener {
@@ -227,25 +228,25 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
         gMap.isMyLocationEnabled = true
         val algiers = LatLng(36.7525, 3.04197)
         startMarker = gMap.addMarker(
-            MarkerOptions()
-                .position(algiers)
-                .title("Point de départ")
-                .icon(
-                    BitmapDescriptorFactory
-                        .defaultMarker(BitmapDescriptorFactory.HUE_AZURE)
-                )
-                .draggable(true)
+                MarkerOptions()
+                        .position(algiers)
+                        .title("Point de départ")
+                        .icon(
+                                BitmapDescriptorFactory
+                                        .defaultMarker(BitmapDescriptorFactory.HUE_AZURE)
+                        )
+                        .draggable(true)
         )
         endMarker = gMap.addMarker(
-            MarkerOptions()
-                .position(algiers)
-                .title("Destination")
-                .icon(
-                    BitmapDescriptorFactory
-                        .defaultMarker(BitmapDescriptorFactory.HUE_BLUE)
-                )
-                .draggable(true)
-                .visible(false)
+                MarkerOptions()
+                        .position(algiers)
+                        .title("Destination")
+                        .icon(
+                                BitmapDescriptorFactory
+                                        .defaultMarker(BitmapDescriptorFactory.HUE_BLUE)
+                        )
+                        .draggable(true)
+                        .visible(false)
         )
         gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(algiers, 10f))
         gMap.setOnMarkerDragListener(object : GoogleMap.OnMarkerDragListener {
@@ -265,16 +266,16 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
 
     private fun checkLocationPermission(){
         if (ActivityCompat.checkSelfPermission(
-                requireContext(), Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
+                        requireContext(), Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(
-                requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED) {
+                        requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                ), PERMISSION_REQUEST_CODE
+                    arrayOf(
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                    ), PERMISSION_REQUEST_CODE
             )
         }else{
             Places.initialize(requireContext(), API_KEY)
@@ -297,8 +298,8 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
                     // Show the dialog by calling startResolutionForResult().
                     // and check the result in onActivityResult().
                     exception.startResolutionForResult(
-                        requireActivity(),
-                        LOCATION_CHECK_CODE
+                            requireActivity(),
+                            LOCATION_CHECK_CODE
                     )
                 } catch (sendEx: IntentSender.SendIntentException) {
                     // Ignore the error.
@@ -314,7 +315,7 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window!!.setGravity(Gravity.BOTTOM)
         dialog.window!!.setLayout(
-            ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT
+                ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT
         )
         dialog.setCancelable(false)
 
@@ -336,30 +337,30 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window!!.setGravity(Gravity.BOTTOM)
         dialog.window!!.setLayout(
-            ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.MATCH_PARENT
+                ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.MATCH_PARENT
         )
         dialog.setCancelable(false)
 
         val url = "https://www.sirius-iot.eu/Dev/Tlink/Android_API_Taxi.php?signup_order"
         val request = object : StringRequest(Method.POST, url,
-            { response ->
-                val jsonResponse = JSONObject(response)
-                val jsonObject = jsonResponse.getJSONObject("ORDER_REGISTRATION")
-                if (jsonObject.getString("error") == "false") {
-                    viewModel.setIdDemand(jsonObject.getString("id_order"))
-                    showOffersList(jsonObject.getJSONArray("LIST_OFFER"))
-                } else {
-                    Toast.makeText(
-                        requireContext(), jsonObject.getString("message"), LENGTH_LONG
-                    ).show()
+                { response ->
+                    val jsonResponse = JSONObject(response)
+                    val jsonObject = jsonResponse.getJSONObject("ORDER_REGISTRATION")
+                    if (jsonObject.getString("error") == "false") {
+                        viewModel.setIdDemand(jsonObject.getString("id_order"))
+                        showOffersList(jsonObject.getJSONArray("LIST_OFFER"))
+                    } else {
+                        Toast.makeText(
+                                requireContext(), jsonObject.getString("message"), LENGTH_LONG
+                        ).show()
+                    }
+                    dialog.dismiss()
+                },
+                { error ->
+                    dialog.dismiss()
+                    Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
+                    requestQueue.stop()
                 }
-                dialog.dismiss()
-            },
-            { error ->
-                dialog.dismiss()
-                Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
-                requestQueue.stop()
-            }
         ){
             override fun getParams():Map<String, String> {
                 val params:HashMap<String, String> = HashMap()
@@ -382,6 +383,11 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
 
         }
 
+        request.retryPolicy = DefaultRetryPolicy(
+               3000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+
         requestQueue.add(request)
 
         dialog.show()
@@ -393,7 +399,7 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window!!.setGravity(Gravity.BOTTOM)
         dialog.window!!.setLayout(
-            ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT
+                ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT
         )
         dialog.setCancelable(false)
 
@@ -446,16 +452,16 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
         val url = "https://www.sirius-iot.eu/Dev/Tlink/Android_API_Taxi.php?signup_trip"
 
         val request = object : StringRequest(Method.POST, url,
-            { response ->
-                val jsonResponse = JSONObject(response)
-                val jsonObject = jsonResponse.getJSONObject("TRIP_REGISTRATION")
-                Toast.makeText(requireContext(), jsonObject.getString("message"), LENGTH_LONG)
-                    .show()
-            },
-            { error ->
-                Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
-                requestQueue.stop()
-            }
+                { response ->
+                    val jsonResponse = JSONObject(response)
+                    val jsonObject = jsonResponse.getJSONObject("TRIP_REGISTRATION")
+                    Toast.makeText(requireContext(), jsonObject.getString("message"), LENGTH_LONG)
+                            .show()
+                },
+                { error ->
+                    Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
+                    requestQueue.stop()
+                }
         ){
             override fun getParams():Map<String, String> {
                 val params:HashMap<String, String> = HashMap()
@@ -476,34 +482,34 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
         binding.partnerinfoLayout.visibility = VISIBLE
         val url = "https://www.sirius-iot.eu/Dev/Tlink/Android_API_Taxi.php?infos_partner"
         val request = object : StringRequest(Method.POST, url,
-            { response ->
-                val jsonResponse = JSONObject(response)
-                val jsonObject = jsonResponse.getJSONObject("PARTNER_INFO")
-                if (jsonObject.getString("error") == "false") {
-                    binding.partnerName.text = "${jsonObject.getString("name")} " + "${jsonObject.getString("surname")}"
-                    binding.phoneButton1.text = jsonObject.getString("tel1")
-                    if (jsonObject.getString("tel2").isNotEmpty()) {
-                        binding.phoneButton2.text = jsonObject.getString("tel2")
-                    } else {
-                        binding.phoneButton2.visibility = GONE
-                    }
-                    binding.phoneButton1.setOnClickListener {
-                        callPhone(jsonObject.getString("tel1"))
-                    }
-                    binding.phoneButton2.setOnClickListener {
-                        callPhone(jsonObject.getString("tel2"))
-                    }
+                { response ->
+                    val jsonResponse = JSONObject(response)
+                    val jsonObject = jsonResponse.getJSONObject("PARTNER_INFO")
+                    if (jsonObject.getString("error") == "false") {
+                        binding.partnerName.text = "${jsonObject.getString("name")} " + "${jsonObject.getString("surname")}"
+                        binding.phoneButton1.text = jsonObject.getString("tel1")
+                        if (jsonObject.getString("tel2").isNotEmpty()) {
+                            binding.phoneButton2.text = jsonObject.getString("tel2")
+                        } else {
+                            binding.phoneButton2.visibility = GONE
+                        }
+                        binding.phoneButton1.setOnClickListener {
+                            callPhone(jsonObject.getString("tel1"))
+                        }
+                        binding.phoneButton2.setOnClickListener {
+                            callPhone(jsonObject.getString("tel2"))
+                        }
 
-                } else {
-                    Toast.makeText(
-                        requireContext(), jsonObject.getString("message"), LENGTH_LONG
-                    ).show()
+                    } else {
+                        Toast.makeText(
+                                requireContext(), jsonObject.getString("message"), LENGTH_LONG
+                        ).show()
+                    }
+                },
+                { error ->
+                    Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
+                    requestQueue.stop()
                 }
-            },
-            { error ->
-                Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
-                requestQueue.stop()
-            }
         ){
             override fun getParams():Map<String, String> {
                 val params:HashMap<String, String> = HashMap()
@@ -546,7 +552,7 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
                     data?.let {
                         val status = Autocomplete.getStatusFromIntent(data)
                         Toast.makeText(
-                            requireContext(), status.statusMessage, LENGTH_LONG
+                                requireContext(), status.statusMessage, LENGTH_LONG
                         ).show()
                     }
                 }
@@ -559,9 +565,9 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode == PERMISSION_REQUEST_CODE){
@@ -573,9 +579,9 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
                 // permission denied, boo! Disable the
                 // functionality that depends on this permission.
                 Toast.makeText(
-                    requireContext(),
-                    "L'application doit avoir votre localisation pour fonctionner.",
-                    LENGTH_SHORT
+                        requireContext(),
+                        "L'application doit avoir votre localisation pour fonctionner.",
+                        LENGTH_SHORT
                 ).show()
                 requireActivity().finish()
             }
