@@ -183,12 +183,16 @@ class TaxiFragment : Fragment(),OnMapReadyCallback
                     currentDateTime.month,
                     currentDateTime.day
             )
+
             dateDialog.setCancelable(false)
+
             dateDialog.setOnShowListener {
                 dateDialog.getButton(Dialog.BUTTON_NEGATIVE).visibility = View.GONE
             }
+
             dateDialog.show()
             dialog.dismiss()
+
         }
         dialog.show()
     }
