@@ -1,38 +1,44 @@
 package com.sirius.net.tlink.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.sirius.net.tlink.R
 import com.sirius.net.tlink.model.Historique
-import com.sirius.net.tlink.model.OffreCovoiturage
 import com.sirius.net.tlink.model.OrderCovoiturage
 
 
-class CovMyOrderAdapter (myOrdersList: ArrayList<Historique>?)
+class CovMyOrderAdapter(myOrdersList: ArrayList<OrderCovoiturage>?)
     : RecyclerView.Adapter<CovMyOrderAdapter.CovMyOrderHolder>() {
 
-    private var adapterMyOrdersList: ArrayList<Historique> = ArrayList()
+    private var adapterMyOrdersList: ArrayList<OrderCovoiturage> = ArrayList()
 
     init {
         if (myOrdersList != null)
             adapterMyOrdersList = myOrdersList
     }
 
-    override fun getItemCount(): Int = 6 //adapterMyOrdersList.size
+    override fun getItemCount(): Int = adapterMyOrdersList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CovMyOrderHolder {
+
         val inflater = LayoutInflater.from(parent.context)
         return CovMyOrderHolder(inflater, parent)
     }
 
     override fun onBindViewHolder(holder: CovMyOrderHolder, position: Int) {
-        //val item = adapterOrdersList[position]
+        val item = adapterMyOrdersList[position]
 
-        //holder.name_order.text = item.price.toString()
-        //holder.date_order.text = item.departDate.toString()
+        holder.fullname.text = item.user.name
+        holder.date_my_order.text = item.departDate
+        holder.time_my_Order.text = item.departTime
+        holder.departure_my_order.text = item.adrDeparture
+        holder.destination_my_order.text = item.adrDestination
+
+
     }
 
     class CovMyOrderHolder(inflater: LayoutInflater, parent: ViewGroup) :
